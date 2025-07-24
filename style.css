@@ -247,7 +247,7 @@
 
         }
         .about{
-            background-image: url('./../images/texture background 1.png');
+            background-image: url('./texture background 1.png');
 
         }
 
@@ -440,7 +440,7 @@
         /* Education Section */
 
         .education{
-            background-image: url('./../images/texture background 1.png');
+            background-image: url('./texture background 1.png');
         }
 
         .timeline {
@@ -645,7 +645,7 @@
         /* Footer */
         footer {
             background-color: var(--card-bg);
-            background-image: url('./../images/texture background 1.png');
+            background-image: url('./texture background 1.png');
             
             padding: 30px 0;
             text-align: center;
