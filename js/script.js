@@ -1,3 +1,71 @@
+const contactForm = document.getElementById('contactForm');
+const result = document.getElementById('result');
+
+// Load hCaptcha script dynamically
+const script = document.createElement('script');
+script.src = 'https://web3forms.com/client/script.js';
+script.async = true;
+script.defer = true;
+document.head.appendChild(script);
+
+// Form submission handler
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending...';
+    
+    // Get form data
+    const formData = new FormData(contactForm);
+    
+    // Additional parameters
+    formData.append('website', window.location.href);
+    formData.append('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+    
+    // Submit to Web3Forms
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(async (response) => {
+        const json = await response.json();
+        
+        if (json.success) {
+            result.innerHTML = "Thank you for your message! I'll get back to you soon.";
+            result.classList.add('success');
+            contactForm.reset();
+            
+            // Redirect if specified
+            if (contactForm.querySelector('input[name="redirect"]').value) {
+                window.location.href = contactForm.querySelector('input[name="redirect"]').value;
+            }
+        } else {
+            console.log(json);
+            result.innerHTML = json.message || "Something went wrong. Please try again.";
+            result.classList.add('error');
+        }
+    })
+    .catch(error => {
+        console.log(error);
+        result.innerHTML = "Something went wrong. Please try again.";
+        result.classList.add('error');
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Message';
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+            result.innerHTML = '';
+            result.classList.remove('success', 'error');
+        }, 5000);
+    });
+});
+
+
+
+
 // Dark/Light Mode Toggle
         const modeToggle = document.getElementById('modeToggle');
         const body = document.body;
@@ -83,26 +151,7 @@
             });
         });
 
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-
-            // Here you would typically send the form data to a server
-            // For this example, we'll just log it and show an alert
-            console.log({ name, email, subject, message });
-
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        });
-
+        
         // Animation on scroll
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.timeline-item, .project-card, .skill-item, .tool-item');
