@@ -139,12 +139,12 @@ nav {
 .hero {
     background: var(--bg);
     background-image: url('./../images/hero background.png');
-background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
     padding: 100px 0;
-    
+
     align-items: center;
     overflow: hidden;
 }
@@ -195,7 +195,7 @@ background-position: center;
     left: 100px;
     color: transparent;
     -webkit-text-stroke: 2px var(--text-light);
-    font-size: clamp(2.7rem, 6vw, 4.2rem); 
+    font-size: clamp(2.7rem, 6vw, 4.2rem);
     z-index: 0;
     pointer-events: none;
     transform: translateY(20px);
@@ -205,11 +205,11 @@ background-position: center;
 
 .main-title .hero-image img {
     height: 470px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  padding: 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 0px;
     border-radius: 20px;
     z-index: 5;
     transition: transform 0.3s ease;
@@ -563,7 +563,7 @@ section {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.tool-item img{
+.tool-item img {
     width: 40px;
 }
 
@@ -737,14 +737,14 @@ footer {
         left: 0;
     }
 
-    .submit-btn{
+    .submit-btn {
         padding: 0.75rem 1.5rem;
-    border: none;
-    background: var(--primary);
-    color: white;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: var(--transition);
+        border: none;
+        background: var(--primary);
+        color: white;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: var(--transition);
     }
 }
 
